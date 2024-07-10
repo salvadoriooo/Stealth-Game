@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Soundmanager : MonoBehaviour
+public class CoinSoundManager : MonoBehaviour
 {
-    public static Soundmanager instance;
+    public static CoinSoundManager instance;
     public AudioSource coinSource;
     public AudioClip coinCollected;
     private void Awake ()
     {
-        instance = this;
+        if (instance == null)
+            instance = this;
     }
     void Start()
     {

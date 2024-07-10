@@ -16,7 +16,7 @@ public class CoinCollection : MonoBehaviour
             totalCoinsCollected++;
             textMeshPro.text = totalCoinsCollected.ToString();
             Debug.Log (totalCoinsCollected);
-            Soundmanager.instance.coinSource.PlayOneShot (Soundmanager.instance.coinCollected);
+            CoinSoundManager.instance.coinSource.PlayOneShot (CoinSoundManager.instance.coinCollected);
             Destroy (other.gameObject);
         }
     }
