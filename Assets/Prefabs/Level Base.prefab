@@ -149,7 +149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5321015619311713201
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3006,6 +3006,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 6aa8dca518621ff41bffb4979744b7c5, type: 2}
+  slider: {fileID: 0}
+  toggle: {fileID: 0}
+  _buttonBack: {fileID: 0}
+  _mainMenu: {fileID: 0}
 --- !u!114 &8437924350924525708
 MonoBehaviour:
   m_ObjectHideFlags: 0
