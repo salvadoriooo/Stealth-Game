@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class StationaryGuard : MonoBehaviour
@@ -10,6 +10,7 @@ public class StationaryGuard : MonoBehaviour
 
     public float speedRotation = 90;
     public float timeToSpotPlayer = .5f;
+    public float rotationDelay = 1f; // Czas oczekiwania między rotacjami
 
     public Light spotLight;
     public float viewDistance;
@@ -21,8 +22,7 @@ public class StationaryGuard : MonoBehaviour
     Transform player;
     Color originalSpotlightColour;
 
-    // Points the guard will look at
-    public Transform[] lookPoints;
+    public Transform[] lookPoints; // Punkty, na które strażnik będzie patrzeć
 
     int currentLookPointIndex;
 
@@ -84,10 +84,14 @@ public class StationaryGuard : MonoBehaviour
     {
         while (true)
         {
-            Vector3 targetLookPoint = lookPoints[currentLookPointIndex].position;
-            yield return StartCoroutine (TargetRotation (targetLookPoint));
+            // Sprawdzenie, czy punkt patrzenia nadal istnieje
+            if (lookPoints[currentLookPointIndex] != null)
+            {
+                Vector3 targetLookPoint = lookPoints[currentLookPointIndex].position;
+                yield return StartCoroutine (TargetRotation (targetLookPoint));
+            }
             currentLookPointIndex = (currentLookPointIndex + 1) % lookPoints.Length;
-            yield return new WaitForSeconds (1f); // Wait time before turning to the next point
+            yield return new WaitForSeconds (rotationDelay); // Czas oczekiwania przed obróceniem się do kolejnego punktu
         }
     }
 
@@ -111,7 +115,10 @@ public class StationaryGuard : MonoBehaviour
             Gizmos.color = Color.yellow;
             foreach (Transform lookPoint in lookPoints)
             {
-                Gizmos.DrawSphere (lookPoint.position, .1f);
+                if (lookPoint != null)
+                {
+                    Gizmos.DrawSphere (lookPoint.position, .1f);
+                }
             }
         }
 
@@ -119,4 +126,3 @@ public class StationaryGuard : MonoBehaviour
         Gizmos.DrawRay (transform.position, transform.forward * viewDistance);
     }
 }
-

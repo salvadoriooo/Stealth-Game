@@ -16,6 +16,7 @@ public class FinishUI : MonoBehaviour
         _gameLoseUI.SetActive(false);
         _gameWinUI.SetActive(false);
         Guard.OnGuardHasSpottedPlayer += showGameLoseUI;
+        StationaryGuard.OnGuardHasSpottedPlayer += showGameLoseUI;
         FindObjectOfType<Player>().OnReachedEndOfLevel += showGameWinUI;
     }
 
@@ -25,10 +26,7 @@ public class FinishUI : MonoBehaviour
         if (_gameIsOver)
         {
             _finishPointUI.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                SceneManager.LoadScene(1);
-            }
+           
         }
     }
 
@@ -46,6 +44,7 @@ public class FinishUI : MonoBehaviour
         gameOverUI.SetActive(true);
         _gameIsOver = true;
         Guard.OnGuardHasSpottedPlayer -= showGameLoseUI;
+        StationaryGuard.OnGuardHasSpottedPlayer -= showGameLoseUI;
         FindObjectOfType<Player>().OnReachedEndOfLevel -= showGameWinUI;
     }
 
