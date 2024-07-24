@@ -10,7 +10,7 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] Slider slider;
     [SerializeField] Toggle toggle;
     [SerializeField] Button _buttonBack;
-    [SerializeField] GameObject _mainMenu;
+    [SerializeField] GameObject _previousView;
     private void Awake ()
     {
         slider.onValueChanged.AddListener(SetVolume);
@@ -31,7 +31,7 @@ public class OptionsMenu : MonoBehaviour
     public void BackToMenu ()
     {
         gameObject.SetActive  (false);
-        _mainMenu.SetActive (true);
+        _previousView.SetActive (true);
 
     }
 }

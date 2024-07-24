@@ -2,13 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool gameIsPaused = false;
-    public GameObject PauseMenuUI;
-    public GameObject CoinUI;
-    // Update is called once per frame
+    [SerializeField] GameObject PauseMenuUI;
+    [SerializeField] GameObject OptionsMenuUI;
+    [SerializeField] GameObject CoinUI;
+    [SerializeField] GameObject NotifyMessage;
+
+    [SerializeField] private Button _resumeButton;
+    [SerializeField] private Button _optionsButton;
+    [SerializeField] private Button _quitButton;
+    
+    void Start ()
+    {
+        FinishPoint.OnReachedEndOfLevel += HideNotifyMessage;
+    }
+
+    void OnDestroy ()
+    {
+        // Отписываемся от события
+        FinishPoint.OnReachedEndOfLevel -= HideNotifyMessage;
+    }
+
     void Update ()
     {
         if (Input.GetKeyDown (KeyCode.Escape))
@@ -24,10 +42,18 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    private void Awake ()
+    {
+        _resumeButton.onClick.AddListener (Resume);
+        _optionsButton.onClick.AddListener (OpenOptions);
+        _quitButton.onClick.AddListener (Quit);
+    }
+
     public void Resume ()
     {
         CoinUI.SetActive (true);
         PauseMenuUI.SetActive (false);
+        OptionsMenuUI.SetActive (false);
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
@@ -35,20 +61,32 @@ public class PauseMenu : MonoBehaviour
     {
         CoinUI.SetActive (false);
         PauseMenuUI.SetActive (true);
+        NotifyMessage.SetActive (false);
         Time.timeScale = 0f;
         gameIsPaused = true;
+
     }
 
-    
-    public void Quit ()
+    private void OpenOptions ()
+    {
+        OptionsMenuUI.SetActive (true);
+        PauseMenuUI.SetActive (false);
+    }
+
+    private void Quit ()
     {
         SceneManager.LoadScene (0);
         ResetGamePauseStatus ();
     }
 
-    void ResetGamePauseStatus ()
+    private void ResetGamePauseStatus ()
     {
         gameIsPaused = false;
         Time.timeScale = 1f;
+    }
+
+    private void HideNotifyMessage ()
+    {
+        NotifyMessage.SetActive (false);
     }
 }

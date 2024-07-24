@@ -20,13 +20,19 @@ public class SceneController : MonoBehaviour
         }
     }
 
-   public void NextLevel ()
+    public void NextLevel ()
     {
+        Debug.Log ("Загрузка следующего уровня");
         SceneManager.LoadSceneAsync (SceneManager.GetActiveScene ().buildIndex + 1);
     }
 
     public void LoadScene (string sceneName)
     {
-        SceneManager.LoadSceneAsync(sceneName);
+        SceneManager.LoadSceneAsync (sceneName);
+    }
+
+    public void Message ()
+    {
+        Debug.Log ("Выводиться");
     }
 }

@@ -210,7 +210,6 @@ public class FinishPoint : MonoBehaviour
             if (allCoinsCollected)
             {
                 OnReachedEndOfLevel?.Invoke ();
-                ProceedToNextLevel ();
             }
             else
             {
@@ -227,8 +226,9 @@ public class FinishPoint : MonoBehaviour
         }
     }
 
-    private void ProceedToNextLevel ()
+    public void ProceedToNextLevel ()
     {
+        Debug.Log ("Переход на следующий уровень");
         SceneController.instance.NextLevel ();
         UnlockNewLevel ();
     }
@@ -269,6 +269,7 @@ public class FinishPoint : MonoBehaviour
         return allCoinsCollected;
     }
 }
+
 
 
 
