@@ -8176,19 +8176,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1904400107590726603}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FinishUI, Assembly-CSharp
-        m_MethodName: OpenLevel
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: Level1
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &5063623293422020454
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8516,6 +8504,7 @@ GameObject:
   - component: {fileID: 8094766832661586394}
   - component: {fileID: 8094766832661586396}
   - component: {fileID: 8094766832661586395}
+  - component: {fileID: 8094766832661586397}
   m_Layer: 5
   m_Name: UI_Finish
   m_TagString: Untagged
@@ -8541,6 +8530,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5561977996173631358}
   - component: {fileID: 8437924351620476116}
+  - component: {fileID: 8437924351620476118}
+  - component: {fileID: 8437924351620476117}
   m_Layer: 0
   m_Name: LevelUIBase
   m_TagString: Untagged
@@ -8734,6 +8725,14 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!222 &8094766832661586397
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107399157795858055}
+  m_CullTransparentMesh: 1
 --- !u!82 &8194552302130291677
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8861,6 +8860,31 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &8437924351620476117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375763022683472480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!222 &8437924351620476118
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375763022683472480}
+  m_CullTransparentMesh: 1
 --- !u!224 &8625177939054380991
 RectTransform:
   m_ObjectHideFlags: 0
