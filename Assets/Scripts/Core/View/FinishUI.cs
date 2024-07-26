@@ -71,13 +71,14 @@ public class FinishUI : MonoBehaviour
     private CoinCollection coinCollection;
 
     [SerializeField] private Button nextLevelButton;
+    [SerializeField] private Button reloadLevelButton;
 
-    void Start ()
+    void Start()
     {
-        coinCollection = FindObjectOfType<CoinCollection> ();
+        coinCollection = FindObjectOfType<CoinCollection>();
 
-        _gameLoseUI.SetActive (false);
-        _gameWinUI.SetActive (false);
+        _gameLoseUI.SetActive(false);
+        _gameWinUI.SetActive(false);
 
         Guard.OnGuardHasSpottedPlayer += showGameLoseUI;
         StationaryGuard.OnGuardHasSpottedPlayer += showGameLoseUI;
@@ -86,76 +87,81 @@ public class FinishUI : MonoBehaviour
 
 
         // Add listener for the Next Level button
-       
+
     }
 
-    void Awake ()
+    void Awake()
     {
-        nextLevelButton.onClick.AddListener (OnNextLevelButtonClicked);
-        Debug.Log ("Назначение слушателя для кнопки 'Next Level'");
+        nextLevelButton.onClick.AddListener(OnNextLevelButtonClicked);
+        reloadLevelButton.onClick.AddListener(OnReloadLevelButtonClicked);
+        Debug.Log("Назначение слушателя для кнопки 'Next Level'");
     }
 
-    void Update ()
+    void Update()
     {
         if (_gameIsOver)
         {
-            _finishPointUI.SetActive (true);
+            _finishPointUI.SetActive(true);
         }
     }
 
 
 
-    private void TryShowGameWinUI ()
+    private void TryShowGameWinUI()
     {
         // Sprawdza, czy wszystkie monety zostały zebrane
         if (coinCollection.AllCoinsCollected)
         {
-            showGameWinUI ();
+            showGameWinUI();
 
         }
     }
 
-    void showGameWinUI ()
+    void showGameWinUI()
     {
-        OnGameOver (_gameWinUI);
+        OnGameOver(_gameWinUI);
     }
 
-    void showGameLoseUI ()
+    void showGameLoseUI()
     {
-        OnGameOver (_gameLoseUI);
+        OnGameOver(_gameLoseUI);
     }
 
-    void OnGameOver (GameObject gameOverUI)
+    void OnGameOver(GameObject gameOverUI)
     {
-        gameOverUI.SetActive (true);
-        
+        gameOverUI.SetActive(true);
+
         _gameIsOver = true;
         Guard.OnGuardHasSpottedPlayer -= showGameLoseUI;
         StationaryGuard.OnGuardHasSpottedPlayer -= showGameLoseUI;
         FinishPoint.OnReachedEndOfLevel -= TryShowGameWinUI;
     }
 
-    public void OpenLevel (int levelIndex)
+    public void OpenLevel(int levelIndex)
     {
         string level = "Level" + levelIndex;
-        SceneManager.LoadScene (level);
+        SceneManager.LoadScene(level);
     }
 
-    public void OnNextLevelButtonClicked ()
+    public void OnNextLevelButtonClicked()
     {
-        Debug.Log ("Кнопка нажата");
-        FinishPoint finishPoint = FindObjectOfType<FinishPoint> ();
+        Debug.Log("Кнопка нажата");
+        FinishPoint finishPoint = FindObjectOfType<FinishPoint>();
         if (finishPoint != null)
         {
-            Debug.Log ("FinishPoint найден");
-            finishPoint.ProceedToNextLevel ();
+            Debug.Log("FinishPoint найден");
+            finishPoint.ProceedToNextLevel();
         }
         else
         {
-            Debug.Log ("FinishPoint не найден");
+            Debug.Log("FinishPoint не найден");
         }
     }
-}
 
+    private void OnReloadLevelButtonClicked()
+    {
+        OpenLevel(SceneManager.GetActiveScene().buildIndex);
+    }
+}
 
 
