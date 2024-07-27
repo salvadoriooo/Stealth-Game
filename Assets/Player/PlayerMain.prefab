@@ -4856,15 +4856,15 @@ PrefabInstance:
       objectReference: {fileID: 908999896181562678}
     - target: {fileID: 5970218416771328991, guid: 7a3e76d3ba476dc43adbe00faa26df0d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3915945
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5970218416771328991, guid: 7a3e76d3ba476dc43adbe00faa26df0d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3915945
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5970218416771328991, guid: 7a3e76d3ba476dc43adbe00faa26df0d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3915945
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5970218416771328991, guid: 7a3e76d3ba476dc43adbe00faa26df0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4906,13 +4906,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5970218416771328991, guid: 7a3e76d3ba476dc43adbe00faa26df0d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6454127380093350245, guid: 7a3e76d3ba476dc43adbe00faa26df0d, type: 3}
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6454127380093350245, guid: 7a3e76d3ba476dc43adbe00faa26df0d, type: 3}
       propertyPath: m_Name
-      value: Player Variant
+      value: PlayerMain
       objectReference: {fileID: 0}
     - target: {fileID: 6454127380093350245, guid: 7a3e76d3ba476dc43adbe00faa26df0d, type: 3}
       propertyPath: m_TagString
@@ -4961,8 +4965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d5a8a7987c7884c8d253ec08d03367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalCoinsCollected: 0
-  textMeshPro: {fileID: 0}
+  collectedCoinsText: {fileID: 0}
+  totalCoinsText: {fileID: 0}
 --- !u!195 &5871075067088753620
 NavMeshAgent:
   m_ObjectHideFlags: 0
