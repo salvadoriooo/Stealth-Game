@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     void Start ()
     {
         Guard.OnGuardHasSpottedPlayer += OnDisable;
+        StationaryGuard.OnGuardHasSpottedPlayer += OnDisable;
         rigibody = GetComponent<Rigidbody> ();
         animator = GetComponent<Animator> ();
         mainCamera = Camera.main;
