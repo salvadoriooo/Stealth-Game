@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class StationaryGuard : MonoBehaviour
 {
-    Animator animator;
+    
     Rigidbody guardRigidbody;
 
     public static event System.Action OnGuardHasSpottedPlayer;
@@ -28,7 +28,7 @@ public class StationaryGuard : MonoBehaviour
 
     void Start ()
     {
-        animator = GetComponent<Animator> ();
+       
         guardRigidbody = GetComponent<Rigidbody> ();
 
         player = GameObject.FindGameObjectWithTag ("Player").transform;
@@ -59,7 +59,8 @@ public class StationaryGuard : MonoBehaviour
             }
         }
 
-        animator.SetFloat ("speed", guardRigidbody.velocity.magnitude);
+        
+
     }
 
     bool CanSeePlayer ()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Guard : MonoBehaviour
 {
-    Animator animator;
+   
     Rigidbody guardRigidbody;
 
     public static event System.Action OnGuardHasSpottedPlayer;
@@ -14,7 +14,7 @@ public class Guard : MonoBehaviour
     public float waitTime = .3f;
     public float timeToSpotPlayer = .5f;
 
-    public bool straightWay;
+    
 
     public Light spotLight;
     public float viewDistance;
@@ -32,7 +32,7 @@ public class Guard : MonoBehaviour
   
     void Start()
     {
-        animator = GetComponent<Animator>();
+        
         guardRigidbody = GetComponent<Rigidbody>();
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -73,7 +73,7 @@ public class Guard : MonoBehaviour
             }
         }
 
-        animator.SetFloat ("speed", guardRigidbody.velocity.magnitude);
+      
 
        
     }
@@ -144,7 +144,7 @@ public class Guard : MonoBehaviour
             Gizmos.DrawLine(previousPosition, waypoint.position);
             previousPosition = waypoint.position;
         }
-     if (!straightWay) { Gizmos.DrawLine(previousPosition, startPosition); }
+   
        
 
         Gizmos.color = Color.red;
