@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Animator animator;
-    public float speed = 7f;
-    public float smoothMoveTime = .1f;
-    public float turnSpeed = 8;
-    float angle;
-    float smoothInputMagnitude;
-    float smoothMoveVelocity;
-    Vector3 velocity;
-    Rigidbody rigibody;
-    bool disabled;
-    Camera mainCamera;
     public event System.Action OnReachedEndOfLevel;
+
+    [SerializeField] private float speed = 7f;
+    [SerializeField] private float smoothMoveTime = .1f;
+    [SerializeField] private float turnSpeed = 8;
+
+    private Animator animator;
+    private float angle;
+    private float smoothInputMagnitude;
+    private float smoothMoveVelocity;
+    private Vector3 velocity;
+    private Rigidbody rigibody;
+    private bool disabled;
+    private Camera mainCamera;
+    
 
     void Start ()
     {
