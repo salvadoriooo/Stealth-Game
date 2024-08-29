@@ -6,9 +6,9 @@ public class Player : MonoBehaviour
 {
     public event System.Action OnReachedEndOfLevel;
 
-    [SerializeField] private float speed = 7f;
-    [SerializeField] private float smoothMoveTime = .1f;
-    [SerializeField] private float turnSpeed = 8;
+    [SerializeField] private float sb_speed = 7f;
+    [SerializeField] private float sb_smoothMoveTime = .1f;
+    [SerializeField] private float sb_turnSpeed = 8;
 
     private Animator animator;
     private float angle;
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
             inputDirection = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical")).normalized;
         }
         float inputMagnitude = inputDirection.magnitude;
-        smoothInputMagnitude = Mathf.SmoothDamp (smoothInputMagnitude, inputMagnitude, ref smoothMoveVelocity, smoothMoveTime);
+        smoothInputMagnitude = Mathf.SmoothDamp (smoothInputMagnitude, inputMagnitude, ref smoothMoveVelocity, sb_smoothMoveTime);
         animator.SetFloat ("speed", smoothInputMagnitude);
 
         Vector3 camForward = mainCamera.transform.forward;
@@ -46,9 +46,9 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = camRotation * inputDirection;
 
         float targetAngle = 90 - Mathf.Atan2 (moveDirection.z, moveDirection.x) * Mathf.Rad2Deg;
-        angle = Mathf.LerpAngle (angle, targetAngle, turnSpeed * Time.deltaTime * inputMagnitude);
+        angle = Mathf.LerpAngle (angle, targetAngle, sb_turnSpeed * Time.deltaTime * inputMagnitude);
 
-        velocity = transform.forward * speed * smoothInputMagnitude;
+        velocity = transform.forward * sb_speed * smoothInputMagnitude;
     }
 
     void OnTriggerEnter(Collider hitCollider)
