@@ -22,7 +22,7 @@ public class SceneController : MonoBehaviour
 
     public void NextLevel ()
     {
-        Debug.Log ("Загрузка следующего уровня");
+        
         SceneManager.LoadSceneAsync (SceneManager.GetActiveScene ().buildIndex + 1);
     }
 
@@ -31,8 +31,5 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadSceneAsync (sceneName);
     }
 
-    public void Message ()
-    {
-        Debug.Log ("Выводиться");
-    }
+   
 }

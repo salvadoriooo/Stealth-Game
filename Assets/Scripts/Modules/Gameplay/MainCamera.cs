@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
-    public Transform player; // Referencja do transformacji gracza
-    public float smoothSpeed = 0.125f; // Współczynnik płynnego poruszania kamery
+    public Transform player; 
+    public float smoothSpeed = 0.125f; 
     [SerializeField] float rotationSpeed = 70f;
     private ObjectFader fader;
-    private Vector3 offset; // Przesunięcie между камерой и игроком
-    private Vector3 danceOffset = new Vector3(5f, 7f, -5f); // Смещение камеры при приближении
+    private Vector3 offset;
+    private Vector3 danceOffset = new Vector3(5f, 7f, -5f); 
     private bool isDancing = false;
 
     void Start()
     {
         offset = new Vector3(11f, 13f, -9f);
 
-        // Постановка камеры 
+      
         transform.position = player.position + offset;
     }
 
     void FixedUpdate()
     {
-        // Обработка вращения камеры
+        
         if (Input.GetKey(KeyCode.Q))
         {
             RotationAroundPlayer(Vector3.up);
@@ -32,7 +32,6 @@ public class MainCamera : MonoBehaviour
             RotationAroundPlayer(-Vector3.up);
         }
 
-        // Обработка перемещения камеры
         Vector3 desiredPosition = player.position + (isDancing ? danceOffset : offset);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
@@ -53,7 +52,7 @@ public class MainCamera : MonoBehaviour
                 if (hit.collider == null) return;
                 if (hit.collider.gameObject == player)
                 {
-                    // Если hit попадает в игрока, остановить fader
+                
                     if (fader != null)
                     {
                         Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red);
@@ -62,7 +61,7 @@ public class MainCamera : MonoBehaviour
                 }
                 else
                 {
-                    // Если hit попадает в другой объект, проверить слой и запустить fader
+                   
                     if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
                     {
                         fader = hit.collider.gameObject.GetComponent<ObjectFader>();
@@ -84,7 +83,7 @@ public class MainCamera : MonoBehaviour
         transform.position = player.position + offset;
     }
 
-    // Метод для установки состояния танца
+   
     public void SetDancingState(bool isDancing)
     {
         this.isDancing = isDancing;

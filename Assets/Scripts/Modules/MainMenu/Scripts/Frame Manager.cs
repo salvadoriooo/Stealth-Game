@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FrameManager : MonoBehaviour
 {
-    public RawImage rawImage;
-    public float speed = 1.0f;
-    public float targetX = 0.5f; // Öåëåâîå çíà÷åíèå ïî îñè X
+    public RawImage sb_rawImage; // nasz obiekt do przesuniÄ™cia
+    public float sb_speed = 1.0f; // prÄ™dkoÅ›Ä‡ przesuniÄ™cia
+    public float sb_targetX = 0.5f; // docelowa wartoÅ›Ä‡ na osi X
 
     void Start ()
     {
@@ -16,13 +16,13 @@ public class FrameManager : MonoBehaviour
 
     IEnumerator MoveRawImage ()
     {
-        Rect uvRect = rawImage.uvRect;
+        Rect uvRect = sb_rawImage.uvRect;
 
-        while (Mathf.Abs (uvRect.x - targetX) > 0.01f)
+        while (Mathf.Abs (uvRect.x - sb_targetX) > 0.01f)
         {
-            float newX = Mathf.MoveTowards (uvRect.x, targetX, speed * Time.deltaTime);
+            float newX = Mathf.MoveTowards (uvRect.x, sb_targetX, sb_speed * Time.deltaTime);
             uvRect.x = newX;
-            rawImage.uvRect = uvRect;
+            sb_rawImage.uvRect = uvRect;
             yield return null;
         }
     }

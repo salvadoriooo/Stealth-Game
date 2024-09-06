@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class LevelMenu : MonoBehaviour
 {
-    public Button[] levelButtons;
+    public Button[] levelButtons; // Tablica przycisk?w do wyboru poziomu
 
     public void Awake ()
     {
